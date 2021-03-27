@@ -10,12 +10,27 @@
     <title>{% block title %} {%endblock title%}</title>
 </head>
 <body>
-    <header >
-        <h1> <a href="{% url 'home' %}">Mi blog</a></h1>
-    </header>
     <div>
-        {%block content%}
-        {%endblock content%}
+        <header >
+            <div class="nav-left">
+                <h1> <a href="{% url 'home' %}">Mi blog</a></h1>
+            </div>
+            <div class="nav-right">
+                {% if user.is_authenticated %}
+                <p>Hi {{ user.username }}!&nbsp;</p>
+                <p>
+                    <a href="{% url 'logout' %}">Log out&nbsp;</a>
+                    <a href="{% url 'post_new' %}">New post&nbsp;</a>
+                </p>
+                {% else %}
+                    <a href="{% url 'login' %}">Log In</a>
+                {% endif %}
+            </div>
+        </header>
+
+        
+            {%block content%}
+            {%endblock content%}
     </div>
 </body>
 </html>

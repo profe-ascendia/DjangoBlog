@@ -10,5 +10,6 @@
         <p>{{post.body}}</p>
     </div>
 
-
+    <a href="{% url 'post_edit' post.id %}">Edit Blog Post</a>
+    <a href="{% url 'post_delete' post.id %}">Delete Blog Post</a>
 {%endblock content%}
